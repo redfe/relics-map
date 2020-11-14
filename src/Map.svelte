@@ -1,8 +1,11 @@
 <script>
-  import * as L from "leaflet";
-  import { onMount } from "svelte";
+  import { L, key } from "./leaflet.js";
+  import { onMount, setContext } from "svelte";
+  setContext(key, {
+    getMap: () => map,
+  });
+  let map;
   onMount(() => {
-    let map;
     map = L.map("mapcontainer", {
       zoomControl: true,
       maxZoom: 8,
@@ -23,6 +26,8 @@
     href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
 </svelte:head>
 
-<div
-  id="mapcontainer"
-  style="position:absolute;top:0;left:0;right:0;bottom:0;" />
+<div id="mapcontainer" style="position:absolute;top:0;left:0;right:0;bottom:0;">
+  {#if map}
+    <slot />
+  {/if}
+</div>
