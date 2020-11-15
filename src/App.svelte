@@ -1,12 +1,14 @@
 <script>
   import Map from "./Map.svelte";
   import RelicMarker from "./RelicMarker.svelte";
-  import Marker from "./RelicMarker.svelte";
+  import { relics } from "./stores.js";
 </script>
 
 <Map>
-  <RelicMarker
-    point={[35.6809591, 139.7673068]}
-    imageUrl="https://image.tnm.jp/image/1024/C0089290.jpg"
-    srcUrl="https://webarchives.tnm.jp/imgsearch/show/C0089290" />
+  {#each $relics as relic}
+    <RelicMarker
+      point={relic.point}
+      imageUrl={relic.imageUrl}
+      srcUrl={relic.srcUrl} />
+  {/each}
 </Map>
