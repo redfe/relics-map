@@ -1,6 +1,6 @@
 <script>
   import { L, key } from "./leaflet";
-  import { getContext } from "svelte";
+  import { getContext, onDestroy, onMount } from "svelte";
 
   const iconSize = [80, 80];
   const { getMap } = getContext(key);
@@ -26,7 +26,11 @@
     html: iconElement,
     iconSize: iconSize,
   });
-  L.marker(point, { icon: icon }).addTo(map);
+  const marker = L.marker(point, { icon: icon }).addTo(map);
+
+  onDestroy(() => {
+    marker.remove();
+  });
 </script>
 
 <style>

@@ -5,7 +5,7 @@
 </script>
 
 <Map>
-  {#each $relics as relic}
+  {#each $relics as relic (relic.id)}
     <RelicMarker
       point={relic.point}
       imageUrl={relic.imageUrl}
