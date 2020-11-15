@@ -11,25 +11,18 @@
   export let imageUrl;
   export let srcUrl;
 
-  const iconElement = document.createElement("a");
-  iconElement.href = srcUrl;
-  iconElement.target = "_blank";
-  iconElement.rel = "noopener noreferrer";
-  const imgElement = document.createElement("img");
-  imgElement.width = iconSize[0];
-  imgElement.height = iconSize[1];
-  imgElement.src = imageUrl;
-  iconElement.appendChild(imgElement);
-
-  const icon = L.divIcon({
-    className: "relic-icon",
-    html: iconElement,
-    iconSize: iconSize,
+  let iconElement;
+  let marker;
+  onMount(() => {
+    const icon = L.divIcon({
+      className: "relic-icon",
+      html: iconElement,
+      iconSize: iconSize,
+    });
+    marker = L.marker(point, { icon: icon }).addTo(map);
   });
-  const marker = L.marker(point, { icon: icon }).addTo(map);
-
   onDestroy(() => {
-    marker.remove();
+    if (marker) marker.remove();
   });
 </script>
 
@@ -38,3 +31,12 @@
     box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.5);
   }
 </style>
+
+<a
+  bind:this={iconElement}
+  href={srcUrl}
+  target="_blank"
+  rel="noopener noreferrer">
+  <!-- svelte-ignore a11y-missing-attribute -->
+  <img width={iconSize[0] + 'px'} height={iconSize[1] + 'px'} src={imageUrl} />
+</a>
