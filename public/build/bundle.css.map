@@ -1,8 +1,12 @@
 {
   "version": 3,
   "file": "bundle.css",
-  "sources": [],
-  "sourcesContent": [],
+  "sources": [
+    "RelicMarker.svelte"
+  ],
+  "sourcesContent": [
+    "<script>\n  import { L, key } from \"./leaflet\";\n  import { getContext, onDestroy, onMount } from \"svelte\";\n\n  const iconSize = [80, 80];\n  const { getMap } = getContext(key);\n  const map = getMap();\n\n  // [緯度,経度]\n  export let point;\n  export let imageUrl;\n  export let srcUrl;\n\n  let iconElement;\n  let marker;\n  onMount(() => {\n    const icon = L.divIcon({\n      className: \"relic-icon\",\n      html: iconElement,\n      iconSize: iconSize,\n    });\n    marker = L.marker(point, { icon: icon }).addTo(map);\n  });\n  onDestroy(() => {\n    if (marker) marker.remove();\n  });\n</script>\n\n<style>\n  :global(.relic-icon) {\n    box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.5);\n  }\n</style>\n\n<a\n  bind:this={iconElement}\n  href={srcUrl}\n  target=\"_blank\"\n  rel=\"noopener noreferrer\">\n  <!-- svelte-ignore a11y-missing-attribute -->\n  <img width={iconSize[0] + 'px'} height={iconSize[1] + 'px'} src={imageUrl} />\n</a>\n"
+  ],
   "names": [],
-  "mappings": ""
+  "mappings": "AA6BU,WAAW,AAAE,CAAC,AACpB,UAAU,CAAE,CAAC,CAAC,CAAC,CAAC,GAAG,CAAC,GAAG,CAAC,KAAK,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,GAAG,CAAC,AAC5C,CAAC"
 }
