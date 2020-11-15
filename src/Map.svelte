@@ -10,7 +10,7 @@
     map = L.map("mapcontainer", {
       zoomControl: true,
       maxZoom: 8,
-      minZoom: 5,
+      minZoom: 6,
     });
     var mpoint = [35.8627, 139.6072];
     map.setView(mpoint, 15);
