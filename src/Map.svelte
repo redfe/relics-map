@@ -12,8 +12,8 @@
       maxZoom: 8,
       minZoom: 6,
     });
-    var mpoint = [35.8627, 139.6072];
-    map.setView(mpoint, 15);
+    var mpoint = [37.8627, 139.6072];
+    map.setView(mpoint, 7);
     map.on("zoomend", (e) => {
       relics.zoom(map.getZoom());
     });
