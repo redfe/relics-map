@@ -1,6 +1,7 @@
 <script>
   import { getContext, onMount } from "svelte";
   import { L, key } from "./leaflet.js";
+  import { relics } from "./stores.js";
   export let min = -16000;
   export let max = -3000;
   export let step = 1000;
@@ -10,8 +11,15 @@
   let controlElement;
   let sliderElement;
   let labelElement;
+  $: {
+    console.log(year);
+    relics.year(year);
+    moveLabel();
+  }
+
   const moveLabel = () => {
     const target = sliderElement;
+    if (!target) return;
     const min = target.min;
     const max = target.max;
     const value = target.value;
@@ -68,7 +76,6 @@
     {min}
     {max}
     {step}
-    on:input={moveLabel}
     bind:value={year}
     bind:this={sliderElement} />
   <p class="label" bind:this={labelElement}>{-year}年前</p>
