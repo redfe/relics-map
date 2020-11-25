@@ -1,10 +1,13 @@
 <script>
   import { getContext, onMount } from "svelte";
   import { L, key } from "./leaflet.js";
+  export let min = -16000;
+  export let max = -3000;
+  export let step = 1000;
+  export let year = -10000;
   const { getMap } = getContext(key);
   const map = getMap();
-  let period = 10000;
-  let periodControlElement;
+  let controlElement;
   let sliderElement;
   let labelElement;
   const moveLabel = () => {
@@ -17,9 +20,9 @@
     labelElement.style.marginLeft = 10 + width * ratio + "px";
   };
   onMount(() => {
-    L.Control.PeriodSlider = L.Control.extend({
+    L.Control.YearSlider = L.Control.extend({
       onAdd: function (map) {
-        const control = L.Util.extend(periodControlElement);
+        const control = L.Util.extend(controlElement);
         L.DomEvent.disableClickPropagation(control);
         return control;
       },
@@ -29,10 +32,10 @@
       },
     });
 
-    L.control.periodSlider = function (opts) {
-      return new L.Control.PeriodSlider(opts);
+    L.control.yearSlider = function (opts) {
+      return new L.Control.YearSlider(opts);
     };
-    const slider = L.control.periodSlider({ position: "topleft" });
+    const slider = L.control.yearSlider({ position: "topleft" });
     slider.addTo(map);
     moveLabel();
   });
@@ -58,15 +61,15 @@
   }
 </style>
 
-<div bind:this={periodControlElement}>
+<div bind:this={controlElement}>
   <input
     type="range"
     class="slider"
-    min="3000"
-    max="16000"
-    step="1000"
+    {min}
+    {max}
+    {step}
     on:input={moveLabel}
-    bind:value={period}
+    bind:value={year}
     bind:this={sliderElement} />
-  <p class="label" bind:this={labelElement}>{period}年前</p>
+  <p class="label" bind:this={labelElement}>{-year}年前</p>
 </div>
