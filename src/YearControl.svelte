@@ -11,8 +11,8 @@
   let controlElement;
   let sliderElement;
   let labelElement;
+
   $: {
-    console.log(year);
     relics.year(year);
     moveLabel();
   }
@@ -27,6 +27,7 @@
     const width = target.offsetWidth - 20;
     labelElement.style.marginLeft = 10 + width * ratio + "px";
   };
+
   onMount(() => {
     L.Control.YearSlider = L.Control.extend({
       onAdd: function (map) {
@@ -43,6 +44,7 @@
     L.control.yearSlider = function (opts) {
       return new L.Control.YearSlider(opts);
     };
+
     const slider = L.control.yearSlider({ position: "topleft" });
     slider.addTo(map);
     moveLabel();
@@ -58,6 +60,7 @@
     background: white;
     border-radius: 10px;
     border: solid 2px silver;
+    width: 15em;
   }
   .label {
     position: absolute;
