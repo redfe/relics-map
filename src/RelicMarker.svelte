@@ -2,7 +2,9 @@
   import { L, key } from "./leaflet";
   import { getContext, onDestroy, onMount } from "svelte";
 
-  const iconSize = [80, 80];
+  const width = null;
+  const height = 80;
+  const iconSize = [width, height];
   const { getMap } = getContext(key);
   const map = getMap();
 
@@ -38,5 +40,8 @@
   target="_blank"
   rel="noopener noreferrer">
   <!-- svelte-ignore a11y-missing-attribute -->
-  <img width={iconSize[0] + 'px'} height={iconSize[1] + 'px'} src={imageUrl} />
+  <img
+    width={width ? width + 'px' : 'auto'}
+    height={height ? height + 'px' : 'auto'}
+    src={imageUrl} />
 </a>
