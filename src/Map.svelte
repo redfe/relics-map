@@ -2,20 +2,34 @@
   import { L, key } from "./leaflet.js";
   import { onMount, setContext } from "svelte";
   import { relics } from "./stores.js";
+  import YearControl from "./YearControl.svelte";
+
+  let map;
+  let zoom = 7;
+  let year = -12000;
+
+  let extractCondition = {
+    zoom: zoom,
+    year: year,
+  };
+
   setContext(key, {
     getMap: () => map,
+    getExtractCondition: () => extractCondition,
   });
-  let map;
+
   onMount(() => {
+    relics.extract(extractCondition);
     map = L.map("mapcontainer", {
       zoomControl: true,
       maxZoom: 8,
       minZoom: 6,
     });
     var mpoint = [37.8627, 139.6072];
-    map.setView(mpoint, 7);
+    map.setView(mpoint, zoom);
     map.on("zoomend", (e) => {
-      relics.zoom(map.getZoom());
+      extractCondition.zoom = map.getZoom();
+      relics.extract(extractCondition);
     });
     L.tileLayer("https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png", {
       attribution:
@@ -32,6 +46,7 @@
 
 <div id="mapcontainer" style="position:absolute;top:0;left:0;right:0;bottom:0;">
   {#if map}
+    <YearControl min={-16000} max={-3000} {year} step={1000} />
     <slot />
   {/if}
 </div>

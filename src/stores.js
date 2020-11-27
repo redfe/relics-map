@@ -105,17 +105,14 @@ const data = [
 function createRelics() {
   const { subscribe, set, update } = writable(data);
 
+  const zoomFilter = (zoom) => (relic) =>
+    zoom ? relic.viewZoom <= zoom : true;
+  const yearFilter = (year) => (relic) =>
+    year ? relic.period.from <= year && year <= relic.period.to : true;
   return {
     subscribe,
-    zoom: (zoom) => {
-      set(data.filter((relic) => relic.viewZoom <= zoom));
-    },
-    year: (year) => {
-      set(
-        data.filter(
-          (relic) => relic.period.from <= year && year <= relic.period.to
-        )
-      );
+    extract: ({ zoom, year }) => {
+      set(data.filter(zoomFilter(zoom)).filter(yearFilter(year)));
     },
   };
 }

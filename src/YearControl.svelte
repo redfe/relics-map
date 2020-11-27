@@ -6,14 +6,16 @@
   export let max = -3000;
   export let step = 1000;
   export let year = -10000;
-  const { getMap } = getContext(key);
+  const { getMap, getExtractCondition } = getContext(key);
   const map = getMap();
+  const extractCondition = getExtractCondition();
   let controlElement;
   let sliderElement;
   let labelElement;
 
   $: {
-    relics.year(year);
+    extractCondition.year = year;
+    relics.extract(extractCondition);
     moveLabel();
   }
 
