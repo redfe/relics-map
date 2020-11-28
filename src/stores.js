@@ -9,6 +9,7 @@ const data = [
     srcUrl: "https://webarchives.tnm.jp/imgsearch/show/C0035830",
     viewZoom: 6,
     period: { from: -13000, to: -10000 },
+    kinds: ["土偶"],
   },
   {
     id: "tnm-C0042713",
@@ -17,6 +18,7 @@ const data = [
     srcUrl: "https://webarchives.tnm.jp/imgsearch/show/C0042713",
     viewZoom: 6,
     period: { from: -12000, to: -11000 },
+    kinds: ["土偶"],
   },
   {
     id: "tnm-C0021401",
@@ -25,6 +27,7 @@ const data = [
     srcUrl: "https://webarchives.tnm.jp/imgsearch/show/C0021401",
     viewZoom: 6,
     period: { from: -16000, to: -3000 },
+    kinds: ["土偶"],
   },
   {
     id: "tnm-C0023848",
@@ -33,6 +36,7 @@ const data = [
     srcUrl: "https://webarchives.tnm.jp/imgsearch/show/C0023848",
     viewZoom: 6,
     period: { from: -5000, to: -4000 },
+    kinds: ["土偶"],
   },
   {
     id: "tnm-C0043248",
@@ -41,8 +45,18 @@ const data = [
     srcUrl: "https://webarchives.tnm.jp/imgsearch/show/C0043248",
     viewZoom: 6,
     period: { from: -11000, to: -10000 },
+    kinds: ["土偶"],
   },
   // 関東方面
+  {
+    id: "tnm-C0034107",
+    point: [35.743478, 138.787513],
+    imageUrl: "https://image.tnm.jp/image/1024/C0034107.jpg",
+    srcUrl: "https://webarchives.tnm.jp/imgsearch/show/C0034107",
+    viewZoom: 7,
+    period: { from: -9000, to: -5000 },
+    kinds: ["土器"],
+  },
   {
     id: "tnm-C0043548",
     point: [35.943478, 139.787513],
@@ -50,6 +64,7 @@ const data = [
     srcUrl: "https://webarchives.tnm.jp/imgsearch/show/C0043548",
     viewZoom: 7,
     period: { from: -9000, to: -5000 },
+    kinds: ["土偶"],
   },
   {
     id: "tnm-C0017174",
@@ -58,6 +73,7 @@ const data = [
     srcUrl: "https://webarchives.tnm.jp/imgsearch/show/C0017174",
     viewZoom: 6,
     period: { from: -13000, to: -10000 },
+    kinds: ["土偶"],
   },
   {
     id: "tnm-C0025827",
@@ -66,6 +82,7 @@ const data = [
     srcUrl: "https://webarchives.tnm.jp/imgsearch/show/C0025827",
     viewZoom: 6,
     period: { from: -13000, to: -10000 },
+    kinds: ["土偶"],
   },
   {
     id: "tnm-C0066301",
@@ -74,6 +91,7 @@ const data = [
     srcUrl: "https://webarchives.tnm.jp/imgsearch/show/C0066301",
     viewZoom: 6,
     period: { from: -13000, to: -10000 },
+    kinds: ["土偶"],
   },
   // 長野方面
   {
@@ -83,6 +101,7 @@ const data = [
     srcUrl: "https://webarchives.tnm.jp/imgsearch/show/E0032603",
     viewZoom: 6,
     period: { from: -13000, to: -10000 },
+    kinds: ["土偶"],
   },
   {
     id: "tnm-E0048581",
@@ -91,6 +110,7 @@ const data = [
     srcUrl: "https://webarchives.tnm.jp/imgsearch/show/E0048581",
     viewZoom: 6,
     period: { from: -13000, to: -10000 },
+    kinds: ["土偶"],
   },
   {
     id: "tnm-E0065111",
@@ -99,6 +119,7 @@ const data = [
     srcUrl: "https://webarchives.tnm.jp/imgsearch/show/E0065111",
     viewZoom: 7,
     period: { from: -13000, to: -10000 },
+    kinds: ["土偶"],
   },
 ];
 
