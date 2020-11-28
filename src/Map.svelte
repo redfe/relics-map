@@ -3,6 +3,7 @@
   import { onMount, setContext } from "svelte";
   import { relics } from "./stores.js";
   import YearControl from "./YearControl.svelte";
+  import KindControl from "./KindControl.svelte";
 
   let map;
   let zoom = 7;
@@ -11,6 +12,7 @@
   let extractCondition = {
     zoom: zoom,
     year: year,
+    kind: null,
   };
 
   setContext(key, {
@@ -47,6 +49,7 @@
 <div id="mapcontainer" style="position:absolute;top:0;left:0;right:0;bottom:0;">
   {#if map}
     <YearControl min={-16000} max={-3000} {year} step={1000} />
+    <KindControl />
     <slot />
   {/if}
 </div>

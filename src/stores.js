@@ -53,8 +53,8 @@ const data = [
     point: [35.743478, 138.787513],
     imageUrl: "https://image.tnm.jp/image/1024/C0034107.jpg",
     srcUrl: "https://webarchives.tnm.jp/imgsearch/show/C0034107",
-    viewZoom: 7,
-    period: { from: -9000, to: -5000 },
+    viewZoom: 6,
+    period: { from: -13000, to: -5000 },
     kinds: ["土器"],
   },
   {
@@ -128,12 +128,22 @@ function createRelics() {
 
   const zoomFilter = (zoom) => (relic) =>
     zoom ? relic.viewZoom <= zoom : true;
+
   const yearFilter = (year) => (relic) =>
     year ? relic.period.from <= year && year <= relic.period.to : true;
+
+  const kindFilter = (kind) => (relic) =>
+    kind ? relic.kinds.indexOf(kind) >= 0 : true;
+
   return {
     subscribe,
-    extract: ({ zoom, year }) => {
-      set(data.filter(zoomFilter(zoom)).filter(yearFilter(year)));
+    extract: ({ zoom, year, kind }) => {
+      set(
+        data
+          .filter(zoomFilter(zoom))
+          .filter(yearFilter(year))
+          .filter(kindFilter(kind))
+      );
     },
   };
 }

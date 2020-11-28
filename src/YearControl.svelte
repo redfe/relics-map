@@ -50,6 +50,7 @@
     const slider = L.control.yearSlider({ position: "topleft" });
     slider.addTo(map);
     moveLabel();
+    return slider;
   });
 </script>
 
@@ -65,7 +66,6 @@
     width: 15em;
   }
   .label {
-    position: absolute;
     width: 6em;
     margin-top: 0.2em;
     font-size: 1.5em;
