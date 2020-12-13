@@ -6,7 +6,7 @@
   import KindControl from "./KindControl.svelte";
 
   let map;
-  let zoom = 7;
+  let zoom = 6;
   let year = -12000;
 
   let extractCondition = {
@@ -24,7 +24,7 @@
     relics.extract(extractCondition);
     map = L.map("mapcontainer", {
       zoomControl: true,
-      maxZoom: 8,
+      maxZoom: 9,
       minZoom: 6,
     });
     var mpoint = [37.8627, 139.6072];
@@ -48,7 +48,7 @@
 
 <div id="mapcontainer" style="position:absolute;top:0;left:0;right:0;bottom:0;">
   {#if map}
-    <YearControl min={-16000} max={-3000} {year} step={1000} />
+    <YearControl min={-16000} max={-2400} {year} step={100} />
     <KindControl />
     <slot />
   {/if}

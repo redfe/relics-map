@@ -3,13 +3,26 @@
   import { L, key } from "./leaflet.js";
   import { relics } from "./stores.js";
 
-  const kinds = ["土器", "土偶", "釣り針", "網かご"];
+  const kinds = [
+    "土器",
+    "土偶",
+    "大珠",
+    "土面",
+    "土版",
+    "角器",
+    "釣針",
+    "石器",
+    "石鏃",
+    "装飾",
+    "垂飾",
+    "骨角器",
+  ];
   const { getMap, getExtractCondition } = getContext(key);
   const map = getMap();
   const extractCondition = getExtractCondition();
 
   let controlElement;
-  let kind = kinds[0];
+  let kind = extractCondition.kind;
 
   $: {
     extractCondition.kind = kind;
