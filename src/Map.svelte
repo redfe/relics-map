@@ -12,7 +12,7 @@
   let extractCondition = {
     zoom: zoom,
     year: year,
-    kind: null,
+    kind: "土器",
   };
 
   setContext(key, {
