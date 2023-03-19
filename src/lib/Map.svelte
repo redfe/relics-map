@@ -24,7 +24,7 @@
     relics.extract(extractCondition);
     map = L.map("mapcontainer", {
       zoomControl: true,
-      maxZoom: 9,
+      maxZoom: 18,
       minZoom: 6,
     });
     var mpoint = [37.8627, 139.6072];
@@ -33,7 +33,7 @@
       extractCondition.zoom = map.getZoom();
       relics.extract(extractCondition);
     });
-    L.tileLayer("https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png", {
+    L.tileLayer("https://mt1.google.com/vt/lyrs=r&x={x}&y={y}&z={z}", {
       attribution:
         "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>地理院タイル</a> | <a href='http://webarchives.tnm.jp/'/>東京国立博物館 研究情報アーカイブス</a>",
     }).addTo(map);
